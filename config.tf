@@ -51,6 +51,28 @@ resource "aws_instance" "tomcat8" {
     user        = "ubuntu"
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
+   } 
+ 
+ provisioner "file"{
+   source      = "~/.ssh/my-key4.pem"
+   destination = "~/.ssh/my-key4.pem"
+ connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    agent       = false
+    private_key = "${file("~/.ssh/my-key4.pem")}"
+    host =  "gitmvn"
+   } 
+ }
+
+ provisioner "file"{
+   source      = "~/myapp/hello-1.0.war"
+   destination = "/var/lib/tomcat8/webapps/"
+ connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    agent       = false
+    private_key = "${file("~/.ssh/my-key4.pem")}"
     host =  "gitmvn"
    } 
  }
