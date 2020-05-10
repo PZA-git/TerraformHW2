@@ -36,7 +36,7 @@ resource "aws_instance" "tomcat8" {
  security_groups = ["launch-wizard-2"]
 
  tags = {
-    Name = "Tomcat8 machine
+    Name = "Tomcat8 machine"
   }
  connection {
     type        = "ssh"
