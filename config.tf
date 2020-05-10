@@ -24,4 +24,23 @@ resource "aws_instance" "gitmvn" {
          "cd myapp && mvn package", 
     ]
  }
+
+resource "aws_instance" "tomcat8" {
+ ami = "ami-0e342d72b12109f91"
+ instance_type = "t2.micro"
+ key_name = "my-key4"
+ security_groups = ["launch-wizard-2"]
+ connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    agent       = false
+    private_key = "${file("~/.ssh/my-key4.pem")}"
+  } 
+ provisioner "remote-exec" {
+    inline = [
+         "sudo apt update",
+         "sudo apt install -y tomcat8",
+    ]
+ }
+
 }
