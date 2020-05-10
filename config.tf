@@ -70,7 +70,7 @@ resource "aws_instance" "tomcat8" {
     user        = "ubuntu"
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
-    host = "gitmvn"
+    host = "Git and Maven machine"
    } 
  }
 }
