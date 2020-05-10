@@ -15,8 +15,8 @@ resource "aws_instance" "gitmvn" {
     private_key = "${file("~/.ssh/my-key4.pem")}"
   } 
 
- module "consul"{
-   source      = "https://github.com/PZA-git/boxfuse3.git"
+ provisioner "file"{
+   source      = "git::https://github.com/PZA-git/boxfuse3.git"
    destination = "myapp"
  }
 }
