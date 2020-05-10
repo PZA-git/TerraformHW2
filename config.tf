@@ -34,7 +34,7 @@ resource "aws_instance" "tomcat8" {
  instance_type = "t2.micro"
  key_name = "my-key4"
  security_groups = ["launch-wizard-2"]
-
+ hostname = 
  tags = {
     Name = "Tomcat8 machine"
   }
@@ -71,7 +71,7 @@ resource "aws_instance" "tomcat8" {
     user        = "ubuntu"
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
-    host = "${var.gitmvn}"
+    host = gitmvn
    } 
  }
 }
