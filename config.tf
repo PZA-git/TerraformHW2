@@ -24,7 +24,17 @@ resource "aws_instance" "gitmvn" {
          "cd myapp && mvn package", 
     ]
  }
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "War_file"
 }
+
+resource "aws_s3_bucket_object" "file_upload" {
+  bucket = "My_bucket"
+  key    = "Hello-1.0.war"
+  source = "~/myapp/target/hello-1.0.war"
+ }
+}
+
 resource "aws_instance" "tomcat8" {
  ami = "ami-0e342d72b12109f91"
  instance_type = "t2.micro"
@@ -42,5 +52,3 @@ resource "aws_instance" "tomcat8" {
          "sudo apt install -y tomcat8",
     ]
  }
-
-}
