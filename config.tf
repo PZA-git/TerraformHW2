@@ -2,6 +2,9 @@
 provider "aws" {
  region = "eu-central-1"
 }
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "War_file"
+}
 
 resource "aws_instance" "gitmvn" {
  ami = "ami-0e342d72b12109f91"
@@ -24,11 +27,8 @@ resource "aws_instance" "gitmvn" {
          "cd myapp && mvn package", 
     ]
  }
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "War_file"
-}
 
-resource "aws_s3_bucket_object" "file_upload" {
+ module "aws_s3_bucket_object" "file_upload" {
   bucket = "My_bucket"
   key    = "Hello-1.0.war"
   source = "~/myapp/target/hello-1.0.war"
