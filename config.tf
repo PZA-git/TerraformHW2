@@ -36,6 +36,7 @@ resource "aws_instance" "tomcat8" {
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
   } 
+ 
  provisioner "remote-exec" {
     inline = [
          "sudo apt update",
@@ -52,7 +53,7 @@ resource "aws_instance" "tomcat8" {
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
    } 
- 
+ } 
  provisioner "file"{
    source      = "~/.ssh/my-key4.pem"
    destination = "~/.ssh/my-key4.pem"
