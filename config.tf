@@ -7,6 +7,10 @@ resource "aws_instance" "gitmvn" {
  instance_type = "t2.micro"
  key_name = "my-key4"
  security_groups = ["launch-wizard-2"]
+ 
+ tags = {
+    Name = "Git and Maven machine"
+  }
  connection {
     type        = "ssh"
     user        = "ubuntu"
@@ -30,6 +34,10 @@ resource "aws_instance" "tomcat8" {
  instance_type = "t2.micro"
  key_name = "my-key4"
  security_groups = ["launch-wizard-2"]
+
+ tags = {
+    Name = "Tomcat8 machine
+  }
  connection {
     type        = "ssh"
     user        = "ubuntu"
