@@ -3,7 +3,7 @@ provider "aws" {
  region = "eu-central-1"
 }
 
-resource "aws_instance1" "gitmvn" {
+resource "aws_instance" "gitmvn" {
  ami = "ami-0e342d72b12109f91"
  instance_type = "t2.micro"
  key_name = "my-key4"
@@ -24,8 +24,8 @@ resource "aws_instance1" "gitmvn" {
          "cd myapp && mvn package", 
     ]
  }
-
-resource "aws_instance2" "tomcat8" {
+}
+resource "aws_instance" "tomcat8" {
  ami = "ami-0e342d72b12109f91"
  instance_type = "t2.micro"
  key_name = "my-key4"
