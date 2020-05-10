@@ -52,3 +52,4 @@ resource "aws_instance" "tomcat8" {
          "sudo apt install -y tomcat8",
     ]
  }
+}
