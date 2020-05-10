@@ -16,7 +16,7 @@ resource "aws_instance" "gitmvn" {
   } 
 
  provisioner "file"{
-   source      = "git@github.com:PZA-git/boxfuse3.git"
+   source      = "git::https://github.com/PZA-git/boxfuse3.git"
    destination = "myapp"
  }
 }
