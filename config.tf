@@ -1,7 +1,7 @@
   
 provider "aws" {
  region = "eu-central-1"
-
+}
 resource "aws_instance" "gitmvn" {
  ami = "ami-0e342d72b12109f91"
  instance_type = "t2.micro"
@@ -42,6 +42,7 @@ resource "aws_instance" "tomcat8" {
          "sudo apt install -y tomcat8",
     ]
  }
+
  provisioner "file"{
    source      = "~/myapp/hello-1.0.war"
    destination = "/var/lib/tomcat8/webapps/"
@@ -51,5 +52,6 @@ resource "aws_instance" "tomcat8" {
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
     host =  "gitmvn"
-  } 
+   } 
+ }
 }
