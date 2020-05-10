@@ -15,8 +15,13 @@ resource "aws_instance" "gitmvn" {
     private_key = "${file("~/.ssh/my-key4.pem")}"
   } 
 
- provisioner "file"{
-   source      = "git::https://github.com/PZA-git/boxfuse3.git"
-   destination = "myapp"
+ provisioner "remote-exec" {
+    inline = [
+         "sudo apt update",
+         "sudo apt install -y git",
+         "sudo apt install -y maven",
+         "git clone https://github.com/PZA-git/boxfuse3.git myapp",
+         "cd myapp && mvn package", 
+    ]
  }
 }
