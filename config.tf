@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "hw" {
-  bucket = "Terra-HW"
+  bucket = "terra-HW"
   acl = "public-read"
 }
 resource "aws_instance" "gitmvn" {
