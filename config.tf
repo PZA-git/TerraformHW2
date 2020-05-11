@@ -2,6 +2,11 @@
 provider "aws" {
  region = "eu-central-1"
 }
+
+resource "aws_s3_bucket" "hw" {
+  bucket = "Terra-HW"
+  acl = "public-read"
+}
 resource "aws_instance" "gitmvn" {
  ami = "ami-0e342d72b12109f91"
  instance_type = "t2.micro"
@@ -49,28 +54,5 @@ resource "aws_instance" "tomcat8" {
          "sudo apt update",
          "sudo apt install -y tomcat8",
     ]
- }
-
- provisioner "file"{
-   source      = "~/.ssh/my-key4.pem"
-   destination = "~/.ssh/my-key4.pem"
- connection {
-    type        = "ssh"
-    user        = "ubuntu"
-    agent       = false
-    private_key = "${file("~/.ssh/my-key4.pem")}"
-   } 
- }
-
- provisioner "file"{
-   source      = "~/myapp/hello-1.0.war"
-   destination = "/var/lib/tomcat8/webapps/"
- connection {
-    type        = "ssh"
-    user        = "ubuntu"
-    agent       = false
-    private_key = "${file("~/.ssh/my-key4.pem")}"
-    host = "aws_instance.gitmvn"
-   } 
  }
 }
