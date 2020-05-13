@@ -37,7 +37,7 @@ resource "aws_instance" "gitmvn" {
          "sido apt install -y awscli",
          "git clone https://github.com/PZA-git/boxfuse3.git myapp",
          "cd myapp && mvn package", 
-         "copy ~/credentials ~/.aws/",         
+         "copy ~/credentials ~/.aws/credentials",         
          "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
          ]
  }
@@ -63,7 +63,6 @@ resource "aws_instance" "tomcat8" {
     inline = [
          "sudo apt update",
          "sudo apt install -y tomcat8",
-         "sudo wget s
     ]
  }
 }
