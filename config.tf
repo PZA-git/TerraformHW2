@@ -36,10 +36,9 @@ resource "aws_instance" "gitmvn" {
          "sudo apt install -y maven",
          "sudo apt install -y awscli",
          "git clone https://github.com/PZA-git/boxfuse3.git myapp",
-         "cd myapp && mvn package", 
+         "cd myapp && mvn -f package", 
          "sudo mkdir ~/.aws",
          "sudo mv ~/credentials ~/.aws/credentials",         
-         "chmod 400 ~/.aws/credentials",
          "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
          ]
  }
