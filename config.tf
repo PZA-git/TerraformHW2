@@ -37,7 +37,7 @@ resource "aws_instance" "gitmvn" {
          "cd ..",
          "sudo mkdir ~/.aws",
          "sudo mv ~/credentials ~/.aws/credentials",         
-         "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
+         "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw --acl public-read",
          ]
  }
 }
