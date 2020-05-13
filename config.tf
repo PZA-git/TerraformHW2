@@ -24,8 +24,8 @@ resource "aws_instance" "gitmvn" {
  }
   
   provisioner "file"{
-   source      = "~/.aws/"
-   destination = "~/.aws/"
+   source      = "~/.aws/credentials"
+   destination = "~/.aws/credentials"
  }
 
 
@@ -37,7 +37,8 @@ resource "aws_instance" "gitmvn" {
          "sido apt install -y awscli",
          "git clone https://github.com/PZA-git/boxfuse3.git myapp",
          "cd myapp && mvn package", 
-         "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",]
+         "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
+         ]
  }
 }
 
