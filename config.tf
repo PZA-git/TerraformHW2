@@ -55,7 +55,6 @@ resource "aws_instance" "tomcat8" {
     type        = "ssh"
     user        = "ubuntu"
     agent       = false
-    timeout = "3m"
     private_key = "${file("~/.ssh/my-key4.pem")}"
   } 
  
@@ -63,6 +62,7 @@ resource "aws_instance" "tomcat8" {
     inline = [
          "sudo apt update",
          "sudo apt install -y tomcat8",
+         "sudo sleep 2m",
          "sudo wget https://terrahw.s3.eu-central-1.amazonaws.com/hello-1.0.war -P /var/lib/tomcat8/webapps/",
     ]
  }
