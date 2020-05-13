@@ -21,6 +21,7 @@ resource "aws_instance" "gitmvn" {
     user        = "ubuntu"
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
+ }
   
   provisioner "file"{
    source      = "~/.aws/"
