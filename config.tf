@@ -39,6 +39,7 @@ resource "aws_instance" "gitmvn" {
          "cd myapp && mvn package", 
          "sudo mkdir ~/.aws",
          "sudo mv ~/credentials ~/.aws/credentials",         
+         "chmod 400 ~/.aws/credentials",
          "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
          ]
  }
