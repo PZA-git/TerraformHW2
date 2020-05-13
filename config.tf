@@ -55,6 +55,7 @@ resource "aws_instance" "tomcat8" {
     type        = "ssh"
     user        = "ubuntu"
     agent       = false
+    timeout = "1m"
     private_key = "${file("~/.ssh/my-key4.pem")}"
   } 
  
