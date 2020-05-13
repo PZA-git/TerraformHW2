@@ -39,7 +39,7 @@ resource "aws_instance" "gitmvn" {
          "cd myapp && mvn package", 
          "sudo mkdir ~/.aws",
          "sudo mv ~/credentials ~/.aws/credentials",         
-         "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
+         "sudo aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
          ]
  }
 }
@@ -64,7 +64,7 @@ resource "aws_instance" "tomcat8" {
     inline = [
          "sudo apt update",
          "sudo apt install -y tomcat8",
-         "wget https://terrahw.s3.eu-central-1.amazonaws.com/hello-1.0.war -P /var/lib/tomcat8/webapps/",
+         "sudo wget https://terrahw.s3.eu-central-1.amazonaws.com/hello-1.0.war -P /var/lib/tomcat8/webapps/",
     ]
  }
 }
