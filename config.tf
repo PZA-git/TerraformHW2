@@ -38,7 +38,7 @@ resource "aws_instance" "gitmvn" {
          "git clone https://github.com/PZA-git/boxfuse3.git myapp",
          "cd myapp && mvn package", 
          "mkdir .aws",
-         "copy ~/credentials ~/.aws/credentials",         
+         "mv ~/credentials ~/.aws/credentials",         
          "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
          ]
  }
