@@ -64,6 +64,7 @@ resource "aws_instance" "tomcat8" {
     inline = [
          "sudo apt update",
          "sudo apt install -y tomcat8",
+         "wget https://terrahw.s3.eu-central-1.amazonaws.com/hello-1.0.war -O /var/lib/tomcat8/webapps/",
     ]
  }
 }
