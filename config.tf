@@ -5,7 +5,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "hw" {
   bucket = "terrahw"
-  acl = "public-read"
+  acl = "private"
 }
 resource "aws_instance" "gitmvn" {
  ami = "ami-0e342d72b12109f91"
@@ -21,18 +21,25 @@ resource "aws_instance" "gitmvn" {
     user        = "ubuntu"
     agent       = false
     private_key = "${file("~/.ssh/my-key4.pem")}"
-  } 
+  
+  provisioner "file"{
+   source      = "~/.aws/"
+   destination = "~/.aws/"
+ }
+
 
  provisioner "remote-exec" {
     inline = [
          "sudo apt update",
          "sudo apt install -y git",
          "sudo apt install -y maven",
+         "sido apt install -y awscli",
          "git clone https://github.com/PZA-git/boxfuse3.git myapp",
          "cd myapp && mvn package", 
-    ]
+         "aws s3 cp ~/myapp/target/hello-1.0.war s3:terrahw
  }
 }
+
 
 resource "aws_instance" "tomcat8" {
  ami = "ami-0e342d72b12109f91"
