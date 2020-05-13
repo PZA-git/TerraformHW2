@@ -5,7 +5,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "hw" {
   bucket = "terrahw"
-  acl = "private"
+  acl = "public-read"
 }
 resource "aws_instance" "gitmvn" {
  ami = "ami-0e342d72b12109f91"
@@ -37,7 +37,7 @@ resource "aws_instance" "gitmvn" {
          "sido apt install -y awscli",
          "git clone https://github.com/PZA-git/boxfuse3.git myapp",
          "cd myapp && mvn package", 
-         "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",
+         "aws s3 cp ~/myapp/target/hello-1.0.war s3://terrahw",]
  }
 }
 
